@@ -3,7 +3,6 @@
 
 //You can start simple and just render a single 
 //pokemon card from the first element
-console.log(data[0]);
 
 const container = document.querySelector(".cards");
 
@@ -21,8 +20,31 @@ for (let x = 0; x < data.length; x++)
     const cardImage = document.createElement("img");
     cardImage.classList.add("card--img");
     cardImage.width="256";
-    cardImage.src = data[x].sprites.other["official-artwork"].front_default;//data[x].sprites.front_default;
+    cardImage.src = data[x].sprites.front_default; //.sprites.other["official-artwork"].front_default;
+    cardImage.addEventListener("click", function(){
+        cardImage.src = cardImage.src === data[x].sprites.front_default ? data[x].sprites.back_default : data[x].sprites.front_default;
+    });
     card.append(cardImage);
+
+
+    const gameText = document.createElement("p");
+    gameText.classList.add("game--text");
+    gameText.innerText = "Games";
+    card.append(gameText);
+
+    const cardGames = document.createElement("select");
+    cardGames.classList.add("card--games");
+
+
+    for (let game = 0; game < data[x].game_indices.length; game++)
+    {
+        const cardGame = document.createElement("option");
+        cardGame.innerText = data[x].game_indices[game].version.name;
+        cardGames.append(cardGame);
+    }
+
+    card.append(cardGames);
+
 
     const cardText = document.createElement("ul");
     cardText.classList.add("card--text");

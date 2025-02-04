@@ -61,6 +61,27 @@ h2 {
   list-style-type: none;
 }
 
+.card--games
+{
+  margin-left: 2rem;
+  size: 3;
+}
+
+
+.card--games:focus
+{
+  max-height: 100px;
+}
+/*
+select:focus{
+  size: 5;
+}*/
+
+.game--text
+{
+  margin-left: 2rem;
+}
+
 .card--text > li{
   margin: 0.5rem;
 }
